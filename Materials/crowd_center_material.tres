@@ -1,7 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ddq5yklkj7o3j"]
 
-[ext_resource type="Texture2D" uid="uid://17qkuna2bldi" path="res://icon.svg" id="1_njvs2"]
+[ext_resource type="Texture2D" uid="uid://d05047efxh4i6" path="res://Sprites/focus.png" id="1_uvu1m"]
 
 [resource]
-albedo_texture = ExtResource("1_njvs2")
+transparency = 1
+albedo_texture = ExtResource("1_uvu1m")
 billboard_mode = 1

@@ -1,14 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsqsnxslew14h"]
+[gd_scene load_steps=6 format=3 uid="uid://bsqsnxslew14h"]
+
+[ext_resource type="Script" path="res://Scripts/minion.gd" id="1_ylbgo"]
+[ext_resource type="Material" uid="uid://dbewjgmvev0a0" path="res://Materials/minion_material.tres" id="2_dxqb0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vr33b"]
+size = Vector3(1, 2.17126, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_vojw5"]
+material = ExtResource("2_dxqb0")
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_qrffu"]
+radius = 2.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["minion"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15091, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ylbgo")
+speed = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.17569, 0)
 shape = SubResource("BoxShape3D_vr33b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_vojw5")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_qrffu")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
