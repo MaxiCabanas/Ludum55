@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt0htboyk2mry"]
+
+[ext_resource type="Material" uid="uid://bm4w1q4egtkuo" path="res://Materials/standard_surface.tres" id="1_nekg7"]
+[ext_resource type="PackedScene" uid="uid://bsqsnxslew14h" path="res://Scenes/minion.tscn" id="2_wd5sk"]
+[ext_resource type="PackedScene" uid="uid://vjtydyy10ey1" path="res://Scenes/crowd_center.tscn" id="3_fwq0a"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(150, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0)
+material = ExtResource("1_nekg7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.862664, 0.505778, 0, -0.505778, 0.862664, 0, 14.6756, 38.2274)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.951197, 0.308585, 0, -0.308585, 0.951197, 0, 16.2842, 32.2228)
+
+[node name="Minion" parent="." instance=ExtResource("2_wd5sk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.903, 1.6837, 12.0467)
+
+[node name="CrowdCenter" parent="." instance=ExtResource("3_fwq0a")]

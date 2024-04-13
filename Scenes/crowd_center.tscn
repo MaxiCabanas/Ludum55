@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://vjtydyy10ey1"]
+
+[ext_resource type="Script" path="res://Scripts/CrowdCenter.gd" id="1_ib6h1"]
+[ext_resource type="Material" uid="uid://ddq5yklkj7o3j" path="res://Materials/crowd_center_material.tres" id="2_t0gnn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_av4y7"]
+material = ExtResource("2_t0gnn")
+
+[node name="CrowdCenter" type="Node3D"]
+script = ExtResource("1_ib6h1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_av4y7")
