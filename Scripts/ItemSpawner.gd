@@ -1,12 +1,37 @@
 extends Node3D
 
-@export var probability = 100.0
+@export var probability: int = 100
 
 func _ready():
-	var item_manager = get_node("/root/ItemManager")
-	add_child(item_manager.get_random_food())
+	if randi_range(0, 100) <= probability:
+		var item_manager = get_node("/root/ItemManager")
+		var food: Array = item_manager.get_random_food()
+		print(food[1])
+		add_child(food[0])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+#OLD IMPLEMENTATION
+#func _calculate_size(food):
+	#var all_meshes = food.find_children("", "MeshInstance3D", true)
+	##var original_size: Vector3 = Vector3.ZERO
+	#var aabb: AABB = all_meshes[0].get_aabb()
+	#
+	#for index in range(1, all_meshes.size(), 1):
+		#aabb.merge(all_meshes[index].get_aabb())
+	##for mesh_instance: MeshInstance3D in all_meshes:
+		##aabb.merge(mesh_instance.get_aabb())
+		##original_size += mesh_instance.get_aabb().size
+	#
+	##original_size = original_size.ceil()
+	#var original_size: Vector3 = aabb.size
+	#var final_size = (original_size.x + original_size.y + original_size.z)
+	#final_size = ceil(final_size)
+	#
+	#print(food.name)
+	#print("Size: ")
+	#print(original_size)
+	#print("Final Size: " + String.num(final_size))
