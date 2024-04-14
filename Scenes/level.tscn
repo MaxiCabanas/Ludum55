@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt0htboyk2mry"]
+[gd_scene load_steps=6 format=3 uid="uid://dt0htboyk2mry"]
+
+[ext_resource type="Script" path="res://Scripts/KillZone.gd" id="1_21hg0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hc3uc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -12,13 +14,26 @@ background_mode = 2
 sky = SubResource("Sky_8c255")
 tonemap_mode = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6y2w"]
+size = Vector3(300, 1, 300)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_td0q4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.37114e-08, -7.57104e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 9.73331, -10)
+transform = Transform3D(-1, 4.37114e-08, -7.57104e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 51.6092, -79.6036)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0, 16.2842, 32.2228)
+
+[node name="KillZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+collision_mask = 3
+script = ExtResource("1_21hg0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+shape = SubResource("BoxShape3D_v6y2w")
+
+[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]

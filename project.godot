@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 CrowdCenter="*res://Scenes/CrowdController.tscn"
 MinionsManager="*res://Scenes/minions_manager.tscn"
 TerrainManagerScene="*res://Scenes/TerrainManagerScene.tscn"
+Hud="*res://Scenes/UI/HUD.tscn"
 
 [input]
 

@@ -7,7 +7,7 @@ extends Node
 
 func _process(delta):
 	if Input.is_action_just_pressed("SpawnMinion"):
-		for i in 10:
+		for i in 3:
 			var minion_instance = preload("res://Scenes/ball.tscn").instantiate()
 			minion_instance.position = Vector3(i,2,i)
 			minion_instance.set_name("minion")

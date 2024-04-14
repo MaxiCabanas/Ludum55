@@ -16,6 +16,11 @@ var _separation_distance = 1
 
 var _local_flockmates = []
 
+func _ready():
+	get_node("/root/Hud").on_minion_spawned()
+
+func _exit_tree():
+	get_node("/root/Hud").on_minion_killed()
 
 func _physics_process(_delta):
 	move_and_collide(_direction * _delta)

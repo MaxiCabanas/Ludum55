@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://chdp4j6hpuhxw"]
+
+[ext_resource type="Theme" uid="uid://blg814rupw0ff" path="res://Themes/DefaultTheme.tres" id="1_laxao"]
+[ext_resource type="Script" path="res://Scenes/UI/HUD.gd" id="2_a7pbi"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_laxao")
+script = ExtResource("2_a7pbi")
+
+[node name="MinionsCounter" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_right = 30.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme = ExtResource("1_laxao")
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
