@@ -45,7 +45,7 @@ transform = Transform3D(-1, 8.74227e-08, 5.46813e-14, 5.06212e-08, 0.579039, 0.8
 cull_mask = 524287
 
 [node name="FoodSpawner" parent="." instance=ExtResource("2_jbpbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.377833, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55055, 0)
 probability = 50
 
 [node name="FoodSpawner2" parent="." instance=ExtResource("2_jbpbr")]
@@ -70,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054847, 0.377833, 1.46794)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45009, 0.377833, 1.46794)
 
 [node name="FoodSpawner8" parent="." instance=ExtResource("2_jbpbr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7838, 0.377833, 1.46794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7838, 2.07022, 1.46794)
 
 [node name="FoodSpawner9" parent="." instance=ExtResource("2_jbpbr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7838, 0.377833, -1.35875)

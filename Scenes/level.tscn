@@ -1,7 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt0htboyk2mry"]
-
-[ext_resource type="PackedScene" uid="uid://cusfh3pdqiw62" path="res://Scenes/kill_zone.tscn" id="1_2ogem"]
-[ext_resource type="PackedScene" uid="uid://6r62outu2il2" path="res://Scenes/TerrainSections/TerrainSection1.tscn" id="2_1rxvg"]
+[gd_scene load_steps=4 format=3 uid="uid://dt0htboyk2mry"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hc3uc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,11 +18,8 @@ tonemap_mode = 2
 environment = SubResource("Environment_td0q4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.37114e-08, -7.57104e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 8.35707, -9.73312)
+transform = Transform3D(-1, 5.01436e-08, -7.16125e-08, 0, 0.819152, 0.573576, 8.74228e-08, 0.573576, -0.819152, 0, 4.8978, -3.37843)
+cull_mask = 524287
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0, 16.2842, 32.2228)
-
-[node name="KillZone" parent="." instance=ExtResource("1_2ogem")]
-
-[node name="FloorMesh" parent="." instance=ExtResource("2_1rxvg")]

@@ -1,4 +1,4 @@
-extends Node3D
+extends RigidBody3D
 
 @export var probability: int = 100
 
@@ -8,12 +8,24 @@ func _ready():
 		var food: Array = item_manager.get_random_food()
 		print(food[1])
 		add_child(food[0])
+		_animate(food[0])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	move_and_collide(Vector3.DOWN * delta)
 
+func _animate(node):
+	var tween: Tween = get_tree().create_tween()
+	tween.bind_node(self)
+	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_loops()
+	
+	var q_target: Quaternion = Quaternion(Vector3.UP, 360)
+	tween.tween_property(node, "quaternion", q_target, 1).as_relative()
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	
 #OLD IMPLEMENTATION
 #func _calculate_size(food):
 	#var all_meshes = food.find_children("", "MeshInstance3D", true)

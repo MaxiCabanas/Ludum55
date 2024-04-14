@@ -22,6 +22,7 @@ MinionsManager="*res://Scenes/minions_manager.tscn"
 Hud="*res://Scenes/UI/HUD.tscn"
 KillZone="*res://Scenes/kill_zone.tscn"
 ItemManager="*res://Scenes/item_manager.tscn"
+TerrainManagerScene="*res://Scenes/TerrainManagerScene.tscn"
 
 [input]
 
@@ -60,6 +61,7 @@ SpawnMinion={
 3d_render/layer_20="OnlyEditorThings"
 3d_physics/layer_1="Floor"
 3d_physics/layer_2="Minions"
+3d_physics/layer_3="Items"
 
 [rendering]
 

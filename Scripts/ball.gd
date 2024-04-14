@@ -1,13 +1,16 @@
+class_name Flock
 extends RigidBody3D
 
 # these weights where defined through
 # trial and error. You can play with them
 # to check how they affect the flock.
-const SEPARATION_WEIGHT = .5
+const SEPARATION_WEIGHT = .1
 const ALIGNMENT_WEIGHT = 0.05
 const COHESION_WEIGHT = 0.05
 const TARGET_WEIGHT = 1
 
+#var should_flip_h: bool = true
+#var is_minion: bool  = true
 
 var _max_speed = 10
 var _speed = 5
@@ -17,12 +20,18 @@ var _separation_distance = 1
 var _local_flockmates = []
 
 func _ready():
+	#if is_minion:
 	get_node("/root/Hud").on_minion_spawned()
+	get_node("/root/MinionsManager").register_minion(self, true)
 
 func _exit_tree():
+	#if is_minion:
 	get_node("/root/Hud").on_minion_killed()
+	get_node("/root/MinionsManager").register_minion(self, false)
 
 func _physics_process(_delta):
+	#$Sprite3D.flip_h = should_flip_h && _direction.x >= 0
+	$Sprite3D.flip_h = _direction.x >= 0
 	move_and_collide(_direction * _delta)
 	_direction = _flock_direction()
 
