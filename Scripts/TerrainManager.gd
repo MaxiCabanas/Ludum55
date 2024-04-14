@@ -53,7 +53,7 @@ func _progress_terrain(delta):
 	#for section in sections_instances:
 		#section.position.z -= speed * delta
 
-	if sections_instances[0].position.z <= -sections_instances[0].mesh.size.z * 2:
+	if sections_instances[0].position.z <= -sections_instances[0].mesh.size.z:
 		var last_section = sections_instances[-1]
 		var first_section = sections_instances.pop_front()
 
@@ -65,7 +65,7 @@ func _progress_terrain(delta):
 		_tween_section(new_section)
 
 func _tween_section(section):
-	var duration = abs((-section.mesh.size.z * 2) - section.position.z) / speed
+	var duration = abs((-section.mesh.size.z) - section.position.z) / speed
 	var tween = get_tree().create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	tween.tween_property(section, "position", Vector3(position.x, position.y, -section.mesh.size.z * 2), duration)
+	tween.tween_property(section, "position", Vector3(position.x, position.y, -section.mesh.size.z), duration)
