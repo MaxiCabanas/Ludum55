@@ -16,8 +16,8 @@ func _physics_process(delta):
 	# Handle jump.
 	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
-	set_active(is_on_floor())
-
+	#set_active(is_on_floor())
+#
 	var direction = get_node("/root/CrowdCenter").global_position - global_position
 	
 	if direction.length() >= 0.5:
@@ -30,6 +30,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	#move_and_collide(Vector3.DOWN * gravity * delta)
 	move_and_slide()
 	
 func _on_detection_area_body_entered(body):

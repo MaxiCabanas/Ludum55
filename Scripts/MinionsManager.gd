@@ -7,8 +7,8 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("SpawnMinion"):
-		var minion_instance = preload("res://Scenes/minion.tscn").instantiate()
-		minion_instance.position = Vector3(0,1,0)
+		var minion_instance = preload("res://Scenes/ball.tscn").instantiate()
+		minion_instance.position = Vector3(0,2,0)
 		minion_instance.set_name("scene")
 		add_child(minion_instance)
 		minions_alive.append(minion_instance)

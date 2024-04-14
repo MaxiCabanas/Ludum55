@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://boer3kefx7f80"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_eotde"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u00u3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_un7be"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fou0d"]
+radius = 2.0
+
+[node name="RigidBody3D" type="RigidBody3D" groups=["minions"]]
+collision_layer = 2
+can_sleep = false
+script = ExtResource("1_eotde")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_u00u3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_un7be")
+
+[node name="DetectionRadius" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRadius"]
+shape = SubResource("SphereShape3D_fou0d")
+
+[connection signal="body_entered" from="DetectionRadius" to="." method="_on_detection_radius_body_entered"]
+[connection signal="body_exited" from="DetectionRadius" to="." method="_on_detection_radius_body_exited"]

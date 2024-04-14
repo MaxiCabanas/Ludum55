@@ -17,9 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-TerrainManagerScene="*res://Scenes/TerrainManagerScene.tscn"
-CrowdCenter="*res://Scenes/CrowdController.tscn"
-MinionsManager="*res://Scripts/MinionsManager.gd"
+CrowdCenter="res://Scenes/CrowdController.tscn"
+MinionsManager="res://Scripts/MinionsManager.gd"
 
 [input]
 

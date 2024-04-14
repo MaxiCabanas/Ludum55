@@ -44,15 +44,16 @@ func _init_blocks():
 			_append_to_far_edge(sections_instances[section_index - 1], new_section)
 		add_child(new_section)
 		sections_instances.append(new_section)
+		_tween_section(new_section)
 
 func _append_to_far_edge(last_section, new_section):
-	new_section.position.z = last_section.position.z + last_section.mesh.size.z/2 + new_section.mesh.size.z/2
+	new_section.position.z = last_section.position.z + last_section.mesh.size.z
 
 func _progress_terrain(delta):
-	for section in sections_instances:
-		section.position.z -= speed * delta
+	#for section in sections_instances:
+		#section.position.z -= speed * delta
 
-	if sections_instances[0].position.z <= -sections_instances[0].mesh.size.z:
+	if sections_instances[0].position.z <= -sections_instances[0].mesh.size.z * 2:
 		var last_section = sections_instances[-1]
 		var first_section = sections_instances.pop_front()
 
@@ -61,3 +62,10 @@ func _progress_terrain(delta):
 		add_child(new_section)
 		sections_instances.append(new_section)
 		first_section.queue_free()
+		_tween_section(new_section)
+
+func _tween_section(section):
+	var duration = abs((-section.mesh.size.z * 2) - section.position.z) / speed
+	var tween = get_tree().create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.tween_property(section, "position", Vector3(position.x, position.y, -section.mesh.size.z * 2), duration)

@@ -4,4 +4,3 @@
 
 [node name="root" type="Node3D"]
 script = ExtResource("1_7yhb5")
-speed = 20.0
