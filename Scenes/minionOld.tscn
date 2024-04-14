@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpmcieifnmbmo"]
+
+[ext_resource type="Material" uid="uid://dbewjgmvev0a0" path="res://Materials/minion_material.tres" id="2_d6r5a"]
+
+[sub_resource type="GDScript" id="GDScript_j3lvp"]
+script/source = "class_name Minion
+extends CharacterBody3D
+
+@export var speed = 5.0
+@export var separation = 5.0
+#@export var jump_velocity = 4.5
+
+@onready var minion_manager = get_node(\"/root/MinionsManager\")
+@onready var is_active = false
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+var local_minions = []
+
+func _physics_process(delta):
+	# Handle jump.
+	#if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+	#	velocity.y = JUMP_VELOCITY
+	#set_active(is_on_floor())
+#
+	var direction = get_node(\"/root/CrowdCenter\").global_position - global_position
+	
+	if direction.length() >= 0.5:
+		velocity.x += direction.normalized().x * speed * delta
+		velocity.z += direction.normalized().z * speed * delta
+	else:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	#move_and_collide(Vector3.DOWN * gravity * delta)
+	move_and_slide()
+	
+func _on_detection_area_body_entered(body):
+	if body == self:
+		return
+		
+	if body.is_in_group(\"minion\"):
+		local_minions.push_back(body)
+
+func _on_detection_area_body_exited(body):
+	if body.is_in_group(\"minion\"):
+		local_minions.erase(body)
+
+func set_active(new_state):
+	if is_active != new_state:
+		is_active = new_state
+		minion_manager.set_minion_as_active(self, is_active)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vr33b"]
+size = Vector3(1, 2.17126, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vojw5"]
+material = ExtResource("2_d6r5a")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qrffu"]
+radius = 2.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["minion"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15091, 0)
+collision_layer = 2
+collision_mask = 3
+script = SubResource("GDScript_j3lvp")
+speed = 50.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.17569, 0)
+shape = SubResource("BoxShape3D_vr33b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_vojw5")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_qrffu")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

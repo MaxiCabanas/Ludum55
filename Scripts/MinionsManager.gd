@@ -1,26 +1,16 @@
 extends Node
 
-var minions_alive = []
+@export var MINIONS_SPRITES: Array = [
+	preload("res://Sprites/Minions/MinionHatB_180x256.png"),
+	preload("res://Sprites/Minions/MinionTreeB_180x256.png")
+]
 
-func _ready():
-	minions_alive.append_array(get_tree().get_nodes_in_group("minion"))
-	
 func _process(delta):
 	if Input.is_action_just_pressed("SpawnMinion"):
-		var minion_instance = preload("res://Scenes/ball.tscn").instantiate()
-		minion_instance.position = Vector3(0,2,0)
-		minion_instance.set_name("scene")
-		add_child(minion_instance)
-		minions_alive.append(minion_instance)
+		for i in 10:
+			var minion_instance = preload("res://Scenes/ball.tscn").instantiate()
+			minion_instance.position = Vector3(i,2,i)
+			minion_instance.set_name("minion")
+			minion_instance.get_node("Sprite3D").texture = MINIONS_SPRITES.pick_random()
+			add_child(minion_instance)
 
-func get_crowd_position():
-	var crowd_position = Vector3.ZERO
-	for minion in minions_alive:
-		crowd_position += minion.position
-	return crowd_position / max(1, minions_alive.size())
-
-func set_minion_as_active(minion, is_active):
-	if is_active && !minions_alive.has(minion):
-		minions_alive.append(minion)
-	elif !is_active && minions_alive.has(minion):
-		minions_alive.erase(minion)
