@@ -13,7 +13,7 @@ shader_parameter/uv_scale = Vector2(1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h50fg"]
 font_size = 300
-font_color = Color(0.74902, 0, 0, 1)
+font_color = Color(0.54902, 0.00784314, 0.00784314, 1)
 shadow_color = Color(1, 1, 1, 1)
 shadow_offset = Vector2(10, -5)
 

@@ -30,9 +30,10 @@ func _physics_process(delta):
 
 
 func _load_terrain_scenes(target_path):
-	var dir = DirAccess.open(target_path)
-	for scene_path in dir.get_files():
-		sections_catalog.append(load(target_path + "/" + scene_path))
+	#var dir = DirAccess.open(target_path)
+	#for scene_path in dir.get_files():
+		#sections_catalog.append(load(target_path + "/" + scene_path))
+		sections_catalog.append(preload("res://Scenes/TerrainSections/floor_tile.tscn"))
 
 func _init_blocks():
 	for section_index in num_of_sections:
