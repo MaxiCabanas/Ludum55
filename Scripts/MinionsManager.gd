@@ -10,7 +10,7 @@ extends Node
 
 var active_minions: Dictionary = {}
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("SpawnMinion"):
 		for i in 3:
 			var minion_instance = preload("res://Scenes/ball.tscn").instantiate()

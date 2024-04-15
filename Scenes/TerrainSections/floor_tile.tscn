@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d5yxhj85fvge"]
+
+[ext_resource type="PackedScene" uid="uid://bh8hap7nsbfkj" path="res://Meshes/Level/Terrain/FloorTile.glb" id="1_pce4o"]
+[ext_resource type="Material" uid="uid://bm4w1q4egtkuo" path="res://Materials/standard_surface.tres" id="2_6husc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7ygb"]
+size = Vector3(14.6599, 1, 10)
+
+[node name="FloorTile" instance=ExtResource("1_pce4o")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6husc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_p7ygb")

@@ -22,4 +22,4 @@ transform = Transform3D(-1, 5.01436e-08, -7.16125e-08, 0, 0.819152, 0.573576, 8.
 cull_mask = 524287
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.642788, 0.766045, 0, -0.766045, -0.642788, 0, 16.2842, 32.2228)
+transform = Transform3D(1, 0, 0, 0, -0.93358, 0.358368, 0, -0.358368, -0.93358, 0, 16.2842, 32.2228)

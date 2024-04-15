@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Ludum55"
-run/main_scene="res://Scenes/level.tscn"
+config/name="Oh my Lord!"
+run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="res://Sprites/UI/UI_LettersBack_1430x1440.png"
+config/icon="res://Sprites/UI/Buttons/UI_Marker_44x44_35.png"
 
 [autoload]
 
