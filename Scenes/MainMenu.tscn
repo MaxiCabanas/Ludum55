@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://mwyssnhkdyh5"]
+
+[ext_resource type="Shader" path="res://Shaders/tilesUV.gdshader" id="1_u76pj"]
+[ext_resource type="Theme" uid="uid://blg814rupw0ff" path="res://Themes/DefaultTheme.tres" id="1_vmd73"]
+[ext_resource type="Texture2D" uid="uid://dml2r2qiii524" path="res://Sprites/UI/UI_BackgroundTile_644x960.png" id="3_8uujh"]
+[ext_resource type="Script" path="res://Scripts/MainMenuBackground.gd" id="3_h3cmx"]
+[ext_resource type="Texture2D" uid="uid://cirbgleu1gbc1" path="res://Sprites/UI/UI_LettersBack_1430x1440.png" id="5_vp8yr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t64t"]
+shader = ExtResource("1_u76pj")
+shader_parameter/uv_scale = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h50fg"]
+font_size = 300
+font_color = Color(0.74902, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 1)
+shadow_offset = Vector2(10, -5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4wok"]
+font_size = 130
+font_color = Color(0.886275, 0.807843, 0.752941, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vmd73")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7t64t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vmd73")
+texture = ExtResource("3_8uujh")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("3_h3cmx")
+uv_u_scale = 0.55
+uv_v_scale = 0.7
+
+[node name="Letters" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -49.0
+offset_right = 171.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vp8yr")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="lord" type="Label" parent="Control"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 337.0
+offset_right = -1092.0
+offset_bottom = -323.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.349066
+size_flags_horizontal = 4
+theme = ExtResource("1_vmd73")
+theme_override_font_sizes/font_size = 250
+text = "Lord!
+"
+label_settings = SubResource("LabelSettings_h50fg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ohmy" type="Label" parent="Control/lord"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 101.243
+offset_top = -13.1171
+offset_right = -207.757
+offset_bottom = -291.117
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_vmd73")
+text = "Oh my
+"
+label_settings = SubResource("LabelSettings_x4wok")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

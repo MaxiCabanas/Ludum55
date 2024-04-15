@@ -24,6 +24,15 @@ KillZone="*res://Scenes/kill_zone.tscn"
 ItemManager="*res://Scenes/item_manager.tscn"
 TerrainManagerScene="*res://Scenes/TerrainManagerScene.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 Left={
